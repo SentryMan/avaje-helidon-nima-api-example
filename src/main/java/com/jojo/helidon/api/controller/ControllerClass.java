@@ -28,10 +28,12 @@ public class ControllerClass {
   @Get("/get")
   void test(ServerRequest req, ServerResponse res) {
     res.headers().contentType(HttpMediaType.create("image/png"));
+
     res.send(service.callDownStream());
   }
 
   @Post("/post")
+  @Produces("application/xml")
   RequestModel testPost(ServerRequest req, ServerResponse res) {
 
     return req.content().as(RequestModel.class);

@@ -113,8 +113,8 @@
 		</dependency>
 		<dependency>
 			<groupId>io.avaje</groupId>
-			<artifactId>avaje-http-helidon-generator</artifactId>
-			<version>1.17</version>
+			<artifactId>avaje-http-nima-generator</artifactId>
+			<version>1.18-SNAPSHOT</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
