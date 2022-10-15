@@ -33,10 +33,9 @@ public class ControllerClass {
   }
 
   @Post("/post")
-  @Produces("application/xml")
   RequestModel testPost(ServerRequest req, ServerResponse res) {
 
-    return req.content().as(RequestModel.class);
+    return new RequestModel("df");
   }
 
   @Get("/health")

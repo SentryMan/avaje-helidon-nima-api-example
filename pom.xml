@@ -36,19 +36,9 @@
 			<artifactId>helidon-nima-webserver</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>io.helidon.nima.http.media</groupId>
-			<artifactId>helidon-nima-http-media-jsonb</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.glassfish</groupId>
-			<artifactId>jakarta.json</artifactId>
-			<version>2.0.1</version>
-		</dependency>
-		<dependency>
-			<groupId>jakarta.json.bind</groupId>
-			<artifactId>jakarta.json.bind-api</artifactId>
-			<version>3.0.0</version>
+			<groupId>io.avaje</groupId>
+			<artifactId>avaje-jsonb</artifactId>
+			<version>1.0-RC1</version>
 		</dependency>
 
 		<dependency>
@@ -197,6 +187,11 @@
 							<groupId>io.avaje</groupId>
 							<artifactId>avaje-http-client-generator</artifactId>
 							<version>1.17</version>
+						</path>
+						<path>
+							<groupId>io.avaje</groupId>
+							<artifactId>avaje-jsonb-generator</artifactId>
+							<version>1.0-RC1</version>
 						</path>
 						<path>
 							<groupId>org.projectlombok</groupId>

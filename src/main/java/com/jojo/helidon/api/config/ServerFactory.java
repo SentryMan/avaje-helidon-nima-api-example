@@ -4,6 +4,7 @@ import com.jojo.helidon.api.exception.ErrorAdvice;
 import io.avaje.config.Config;
 import io.avaje.inject.Bean;
 import io.avaje.inject.Factory;
+import io.avaje.jsonb.Jsonb;
 import io.helidon.nima.webserver.WebServer;
 import io.helidon.nima.webserver.http.HttpRouting;
 import io.helidon.nima.webserver.http.HttpService;
@@ -19,10 +20,14 @@ public class ServerFactory {
     for (final HttpService httpService : routes) {
       httpService.routing(builder);
     }
-
     return WebServer.builder()
         .addRouting(builder.build())
         .port(Config.getInt("server.port", 8080))
         .build();
+  }
+
+  @Bean
+  Jsonb jsonB() {
+    return Jsonb.builder().failOnUnknown(false).build();
   }
 }
