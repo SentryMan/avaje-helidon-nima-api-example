@@ -26,17 +26,18 @@ public class ControllerClass {
   @Produces("image/png")
   @Get("/get")
   byte[] testBytes(ServerRequest req, ServerResponse res) {
+
     return service.callDownStream();
   }
 
   @Post("/post")
-  RequestModel testPost(ServerRequest req, ServerResponse res) {
+  RequestModel testPost(RequestModel m) {
 
-    return new RequestModel("df");
+    return new RequestModel("dfdf");
   }
 
   @Post("/postList")
-  List<RequestModel> testList(ServerRequest req, ServerResponse res) {
+  List<RequestModel> testList(List<RequestModel> l) {
 
     return List.of(new RequestModel("df"));
   }
