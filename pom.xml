@@ -74,7 +74,7 @@
 		<dependency>
 			<groupId>io.avaje</groupId>
 			<artifactId>avaje-http-api</artifactId>
-			<version>1.18-SNAPSHOT</version>
+			<version>1.18</version>
 		</dependency>
 		<dependency>
 			<groupId>io.avaje</groupId>
@@ -104,7 +104,7 @@
 		<dependency>
 			<groupId>io.avaje</groupId>
 			<artifactId>avaje-http-nima-generator</artifactId>
-			<version>1.18-SNAPSHOT</version>
+			<version>1.18</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -181,7 +181,7 @@
 						<path>
 							<groupId>io.avaje</groupId>
 							<artifactId>avaje-http-nima-generator</artifactId>
-							<version>1.18-SNAPSHOT</version>
+							<version>1.18</version>
 						</path>
 						<path>
 							<groupId>io.avaje</groupId>
