@@ -1,25 +1,27 @@
 package com.jojo.helidon.api.config;
 
+import java.net.http.HttpClient.Version;
+import java.time.Duration;
+import java.util.concurrent.Executors;
+
 import com.jojo.helidon.api.client.HTTPListeners;
+
 import io.avaje.config.Config;
-import io.avaje.http.client.HttpClientContext;
+import io.avaje.http.client.HttpClient;
 import io.avaje.http.client.JsonbBodyAdapter;
 import io.avaje.inject.Bean;
 import io.avaje.inject.Factory;
 import io.avaje.jsonb.Jsonb;
-import java.net.http.HttpClient.Version;
-import java.time.Duration;
-import java.util.concurrent.Executors;
 
 @Factory
 public class HttpClientFactory {
 
   @Bean
-  HttpClientContext client(
+  HttpClient client(
       // AuthProvider provider
       Jsonb jsonb) {
 
-    return HttpClientContext.builder()
+    return HttpClient.builder()
         .baseUrl(Config.get("base.url"))
         .bodyAdapter(new JsonbBodyAdapter(jsonb))
         .executor(Executors.newVirtualThreadPerTaskExecutor())

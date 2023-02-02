@@ -1,15 +1,16 @@
 package com.jojo.helidon.api.config;
 
+import java.time.Instant;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import io.avaje.config.Config;
 import io.avaje.http.client.AuthToken;
 import io.avaje.http.client.AuthTokenProvider;
 import io.avaje.http.client.HttpClientRequest;
-import java.time.Instant;
 
 // @Singleton
-
 public class AuthProvider implements AuthTokenProvider {
 
   private static final String ID = Config.get("client.id");
