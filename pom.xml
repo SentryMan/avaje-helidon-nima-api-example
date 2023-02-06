@@ -23,7 +23,7 @@
 			<dependency>
 				<groupId>io.helidon</groupId>
 				<artifactId>helidon-bom</artifactId>
-				<version>4.0.0-ALPHA3</version>
+				<version>4.0.0-ALPHA4</version>
 				<scope>import</scope>
 				<type>pom</type>
 			</dependency>
