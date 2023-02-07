@@ -3,7 +3,6 @@ package com.jojo.helidon.api.service;
 import com.jojo.helidon.api.client.ApiClient;
 import com.jojo.helidon.api.exception.ApplicationException;
 import com.jojo.helidon.api.exception.ErrorEnum;
-import io.avaje.http.client.HttpClientContext;
 import io.avaje.http.client.HttpException;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
@@ -18,8 +17,8 @@ public class ServiceClass {
   private final ApiClient api;
 
   @Inject
-  public ServiceClass(HttpClientContext ctx) {
-    api = ctx.create(ApiClient.class);
+  public ServiceClass(ApiClient api) {
+    this.api = api;
   }
 
   public byte[] callDownStream() {

@@ -1,17 +1,16 @@
 package com.jojo.helidon.api.config;
 
-import java.net.http.HttpClient.Version;
-import java.time.Duration;
-import java.util.concurrent.Executors;
-
+import com.jojo.helidon.api.client.ApiClient;
 import com.jojo.helidon.api.client.HTTPListeners;
-
 import io.avaje.config.Config;
 import io.avaje.http.client.HttpClient;
 import io.avaje.http.client.JsonbBodyAdapter;
 import io.avaje.inject.Bean;
 import io.avaje.inject.Factory;
 import io.avaje.jsonb.Jsonb;
+import java.net.http.HttpClient.Version;
+import java.time.Duration;
+import java.util.concurrent.Executors;
 
 @Factory
 public class HttpClientFactory {
@@ -33,5 +32,11 @@ public class HttpClientFactory {
         .requestLogging(false)
         .requestListener(HTTPListeners::logRequest)
         .build();
+  }
+
+  @Bean
+  ApiClient apiClient(HttpClient client) {
+
+    return client.create(ApiClient.class);
   }
 }
