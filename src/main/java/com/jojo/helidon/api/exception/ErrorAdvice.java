@@ -1,7 +1,5 @@
 package com.jojo.helidon.api.exception;
 
-import java.io.OutputStream;
-
 import io.avaje.jsonb.JsonType;
 import io.avaje.jsonb.Jsonb;
 import io.helidon.common.http.Http.Status;
@@ -9,6 +7,7 @@ import io.helidon.nima.webserver.http.HttpRouting.Builder;
 import io.helidon.nima.webserver.http.ServerRequest;
 import io.helidon.nima.webserver.http.ServerResponse;
 import jakarta.inject.Singleton;
+import java.io.OutputStream;
 
 @Singleton
 public class ErrorAdvice {
