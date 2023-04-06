@@ -2,12 +2,12 @@ package com.jojo.helidon.api.exception;
 
 import io.avaje.jsonb.JsonType;
 import io.avaje.jsonb.Jsonb;
+import io.avaje.jsonb.stream.JsonOutput;
 import io.helidon.common.http.Http.Status;
 import io.helidon.nima.webserver.http.HttpRouting.Builder;
 import io.helidon.nima.webserver.http.ServerRequest;
 import io.helidon.nima.webserver.http.ServerResponse;
 import jakarta.inject.Singleton;
-import java.io.OutputStream;
 
 @Singleton
 public class ErrorAdvice {
@@ -30,7 +30,8 @@ public class ErrorAdvice {
     errorType.toJson(error, outputStream);
   }
 
-  OutputStream getServletStream(Status status, ServerResponse res) {
-    return res.status(status).header("Content-Type", "application/json").outputStream();
+  JsonOutput getServletStream(Status status, ServerResponse res) {
+
+    return JsonOutput.of(res.status(status).header("Content-Type", "application/json"));
   }
 }
