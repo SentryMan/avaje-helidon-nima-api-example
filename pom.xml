@@ -13,7 +13,7 @@
 	<name>avaje-helidon-nima-template</name>
 	<description>Demo project for Javalin</description>
 	<properties>
-		<java.version>20</java.version>
+		<java.version>19</java.version>
 		<avaje.inject.version>9.0</avaje.inject.version>
 		<avaje.jsonb.version>1.4</avaje.jsonb.version>
 		<avaje.config.version>3.1</avaje.config.version>
@@ -80,11 +80,6 @@
 		</dependency>
 		<dependency>
 			<groupId>io.avaje</groupId>
-			<artifactId>avaje-http-hibernate-validator</artifactId>
-			<version>3.1-RC1</version>
-		</dependency>
-		<dependency>
-			<groupId>io.avaje</groupId>
 			<artifactId>avaje-inject-test</artifactId>
 			<version>${avaje.inject.version}</version>
 			<scope>test</scope>
@@ -95,30 +90,36 @@
 			<version>2.28.0</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- Test Annotation processors -->
+
+		<!-- Annotation processors -->
 		<dependency>
 			<groupId>io.avaje</groupId>
 			<artifactId>avaje-inject-generator</artifactId>
 			<version>${avaje.inject.version}</version>
-			<scope>test</scope>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>io.avaje</groupId>
 			<artifactId>avaje-jsonb-generator</artifactId>
 			<version>${avaje.jsonb.version}</version>
-			<scope>test</scope>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>io.avaje</groupId>
 			<artifactId>avaje-http-nima-generator</artifactId>
 			<version>${avaje.http.version}</version>
-			<scope>test</scope>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>io.avaje</groupId>
 			<artifactId>avaje-http-client-generator</artifactId>
 			<version>${avaje.http.version}</version>
-			<scope>test</scope>
+			<scope>provided</scope>
+		</dependency>		
+		<dependency>
+			<groupId>com.google.errorprone</groupId>
+			<artifactId>error_prone_core</artifactId>
+			<version>2.15.0</version>
 		</dependency>
 	</dependencies>
 	<build>
@@ -126,7 +127,7 @@
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.8.8</version>
+				<version>0.8.9</version>
 				<executions>
 					<execution>
 						<goals>
@@ -145,13 +146,33 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.0.0</version>
 				<configuration>
 					<argLine>@{argLine} --enable-preview</argLine>
 				</configuration>
-			</plugin>
+			</plugin>	
+			<!-- Create the Runnable Jar with dependencies -->
 			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<transformers combine.self="override">
+								<transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
+								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<mainClass>com.jojo.helidon.api.NimaAPI</mainClass>
+								</transformer>
+							</transformers>
+							<createDependencyReducedPom>false</createDependencyReducedPom>
+							<keepDependenciesWithProvidedScope>false</keepDependenciesWithProvidedScope>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>com.spotify.fmt</groupId>
@@ -175,35 +196,8 @@
 						<arg>-XDcompilePolicy=simple</arg>
 						<arg>-Xplugin:ErrorProne</arg>
 					</compilerArgs>
-					<annotationProcessorPaths>
-						<path>
-							<groupId>com.google.errorprone</groupId>
-							<artifactId>error_prone_core</artifactId>
-							<version>2.15.0</version>
-						</path>
-						<path>
-							<groupId>io.avaje</groupId>
-							<artifactId>avaje-inject-generator</artifactId>
-							<version>${avaje.inject.version}</version>
-						</path>
-						<path>
-							<groupId>io.avaje</groupId>
-							<artifactId>avaje-http-nima-generator</artifactId>
-							<version>${avaje.http.version}</version>
-						</path>
-						<path>
-							<groupId>io.avaje</groupId>
-							<artifactId>avaje-http-client-generator</artifactId>
-							<version>${avaje.http.version}</version>
-						</path>
-						<path>
-							<groupId>io.avaje</groupId>
-							<artifactId>avaje-jsonb-generator</artifactId>
-							<version>${avaje.jsonb.version}</version>
-						</path>
-					</annotationProcessorPaths>
 				</configuration>
-			</plugin> <!--Enforcecorrectloggingframework-->
+			</plugin> 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-enforcer-plugin</artifactId>
@@ -220,42 +214,11 @@
 						<configuration>
 							<rules>
 								<banDuplicatePomDependencyVersions />
-								<bannedDependencies>
-									<excludes>
-										<!--slf4jshouldbeusedinstead-->
-										<exclude>commons-logging:commons-logging</exclude>
-										<exclude>commons-logging:commons-logging-api</exclude>
-										<exclude>org.apache.logging.log4j:log4j-core</exclude>
-									</excludes>
-								</bannedDependencies>
 							</rules>
 						</configuration>
 						<goals>
 							<goal>enforce</goal>
 						</goals>
-					</execution>
-					<execution>
-						<id>check-imports</id>
-						<phase>process-sources</phase>
-						<goals>
-							<goal>enforce</goal>
-						</goals>
-						<configuration>
-							<rules>
-								<RestrictImports>
-									<reason>UseSLF4jforlogging</reason>
-									<bannedImports>
-										<bannedImport>java.util.logging.**</bannedImport>
-										<bannedImport>org.apache.commons.logging.**</bannedImport>
-										<bannedImport>org.apache.logging.log4j.**</bannedImport>
-									</bannedImports>
-									<basePackages>
-										<basePackage>com.jojo.**</basePackage>
-									</basePackages>
-									<includeTestCode>false</includeTestCode>
-								</RestrictImports>
-							</rules>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>
