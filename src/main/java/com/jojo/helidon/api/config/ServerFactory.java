@@ -1,19 +1,19 @@
 package com.jojo.helidon.api.config;
 
-import com.jojo.helidon.api.exception.ErrorAdvice;
+import java.util.List;
+
 import io.avaje.config.Config;
 import io.avaje.inject.Bean;
 import io.avaje.inject.Factory;
 import io.helidon.nima.webserver.WebServer;
 import io.helidon.nima.webserver.http.HttpRouting;
 import io.helidon.nima.webserver.http.HttpService;
-import java.util.List;
 
 @Factory
 public class ServerFactory {
 
   @Bean
-  WebServer server(List<HttpService> routes, ErrorAdvice advice) {
+  WebServer server(List<HttpService> routes) {
 
     final var builder = HttpRouting.builder();
     for (final HttpService httpService : routes) {
@@ -21,7 +21,7 @@ public class ServerFactory {
     }
 
     return WebServer.builder()
-        .addRouting(advice.addErrorHandling(builder))
+        .addRouting(builder)
         .port(Config.getInt("server.port", 8080))
         .build();
   }

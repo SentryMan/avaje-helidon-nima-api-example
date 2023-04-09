@@ -5,12 +5,14 @@ import io.avaje.jsonb.Jsonb;
 import io.avaje.jsonb.stream.JsonOutput;
 import io.helidon.common.http.Http.Status;
 import io.helidon.nima.webserver.http.HttpRouting.Builder;
+import io.helidon.nima.webserver.http.HttpRules;
+import io.helidon.nima.webserver.http.HttpService;
 import io.helidon.nima.webserver.http.ServerRequest;
 import io.helidon.nima.webserver.http.ServerResponse;
 import jakarta.inject.Singleton;
 
 @Singleton
-public class ErrorAdvice {
+public class ErrorAdvice implements HttpService {
 
   private final JsonType<ErrorResponse> errorType;
 
@@ -19,9 +21,11 @@ public class ErrorAdvice {
   }
 
   // register the different error handling
-  public Builder addErrorHandling(Builder builder) {
-    builder.error(Exception.class, this::handle);
-    return builder;
+  @Override
+  public void routing(HttpRules rules) {
+    if (rules instanceof final Builder builder) {
+      builder.error(Exception.class, this::handle);
+    }
   }
 
   private void handle(ServerRequest req, ServerResponse res, Exception ex) {
