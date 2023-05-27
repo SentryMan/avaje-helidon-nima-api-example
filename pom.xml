@@ -15,10 +15,10 @@
 	<description>Demo project for Javalin</description>
 	<properties>
 		<java.version>20</java.version>
-		<avaje.inject.version>9.0</avaje.inject.version>
+		<avaje.inject.version>9.2</avaje.inject.version>
 		<avaje.jsonb.version>1.4</avaje.jsonb.version>
-		<avaje.config.version>3.1</avaje.config.version>
-		<avaje.http.version>1.37</avaje.http.version>
+		<avaje.config.version>3.2</avaje.config.version>
+		<avaje.http.version>1.39</avaje.http.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -35,10 +35,6 @@
 		<dependency>
 			<groupId>io.helidon.nima.webserver</groupId>
 			<artifactId>helidon-nima-webserver</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -121,6 +117,7 @@
 			<groupId>com.google.errorprone</groupId>
 			<artifactId>error_prone_core</artifactId>
 			<version>2.15.0</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 	<build>
@@ -154,33 +151,7 @@
 				</configuration>
 			</plugin>
 			<!-- Create the Runnable Jar with dependencies -->
- <plugin>
-            <groupId>com.github.akman</groupId>
-            <artifactId>jlink-maven-plugin</artifactId>
-            <version>0.1.11</version>
-            <executions>
-              <execution>
-                <phase>package</phase>
-                <goals>
-                  <goal>jlink</goal>
-                </goals>
-              </execution>
-            </executions>
-            <configuration>
-              <modulepath>
-                <dependencysets>
-                  <!-- add project dependencies to modulepath -->
-                  <dependencyset>
-                    <!-- add project output (module) to modulepath -->
-                    <includeoutput>true</includeoutput>
-                  </dependencyset>
-                </dependencysets>
-              </modulepath>
-              <noheaderfiles>true</noheaderfiles>
-              <nomanpages>true</nomanpages>
-              <stripdebug>true</stripdebug>
-            </configuration>
-          </plugin>
+
 			<plugin>
 				<groupId>com.spotify.fmt</groupId>
 				<artifactId>fmt-maven-plugin</artifactId>
@@ -239,6 +210,60 @@
 						<goals>
 							<goal>provides</goal>
 						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/modules</outputDirectory>
+							<includeScope>runtime</includeScope>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<outputDirectory>${project.build.directory}/modules</outputDirectory>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.moditect</groupId>
+				<artifactId>moditect-maven-plugin</artifactId>
+				<version>1.0.0.Final</version>
+				<executions>
+					<execution>
+						<id>create-runtime-image</id>
+						<phase>package</phase>
+						<goals>
+							<goal>create-runtime-image</goal>
+						</goals>
+						<configuration>
+							<modulePath>
+								<path>${project.build.directory}/modules</path>
+								
+							</modulePath>
+							<modules>
+								<module>nima.example</module>
+							</modules>
+							<excludedResources>
+								<pattern>glob:/com.example/**</pattern>
+							</excludedResources>
+							<stripDebug>true</stripDebug>
+							<noManPages>true</noManPages>
+							<noHeaderFiles>true</noHeaderFiles>
+							<jarInclusionPolicy>NONE</jarInclusionPolicy>
+							<outputDirectory>
+								${project.build.directory}/jlink-image
+							</outputDirectory>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>

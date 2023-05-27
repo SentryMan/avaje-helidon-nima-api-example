@@ -13,8 +13,7 @@ public class NimaAPI {
       BeanScope.builder().build().get(WebServer.class).start();
 
     } catch (final Exception e) {
-
-      log.error("Failed to start: ", e);
+      e.printStackTrace();
     }
   }
 }
