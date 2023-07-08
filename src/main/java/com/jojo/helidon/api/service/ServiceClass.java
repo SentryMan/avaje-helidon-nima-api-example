@@ -6,6 +6,7 @@ import com.jojo.helidon.api.exception.ErrorEnum;
 import io.avaje.http.client.HttpException;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
+import java.io.InputStream;
 import java.net.http.HttpResponse;
 import java.util.Optional;
 
@@ -21,7 +22,7 @@ public class ServiceClass {
     this.api = api;
   }
 
-  public byte[] callDownStream() {
+  public InputStream callDownStream() {
     try {
 
       return api.call("image/png").body();

@@ -8,6 +8,7 @@ import io.avaje.http.api.Produces;
 import io.helidon.nima.webserver.http.ServerRequest;
 import io.helidon.nima.webserver.http.ServerResponse;
 import jakarta.inject.Inject;
+import java.io.InputStream;
 import java.util.List;
 
 @Controller("/nima")
@@ -23,7 +24,7 @@ public class ControllerClass {
 
   @Produces("image/png")
   @Get("/get")
-  byte[] testBytes(ServerRequest req, ServerResponse res) {
+  InputStream testBytes(ServerRequest req, ServerResponse res) {
 
     return service.callDownStream();
   }
