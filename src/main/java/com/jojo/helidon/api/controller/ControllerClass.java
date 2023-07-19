@@ -25,7 +25,7 @@ public class ControllerClass {
   @Produces("image/png")
   @Get("/get")
   InputStream testBytes(ServerRequest req, ServerResponse res) {
-
+    req.headers().first(io.helidon.common.http.Http.Header.create(""));
     return service.callDownStream();
   }
 

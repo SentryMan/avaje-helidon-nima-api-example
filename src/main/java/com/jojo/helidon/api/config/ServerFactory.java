@@ -19,6 +19,9 @@ public class ServerFactory {
       httpService.routing(builder);
     }
 
-    return WebServer.builder().addRouting(builder).port(Config.getInt("server.port", 8080)).build();
+    return WebServer.builder()
+        .addRouting(builder.build())
+        .port(Config.getInt("server.port", 8080))
+        .build();
   }
 }
