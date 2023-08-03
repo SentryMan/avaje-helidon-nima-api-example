@@ -9,10 +9,10 @@
 	<description>Demo project for Javalin</description>
 	<properties>
         <maven.compiler.release>20</maven.compiler.release>
-		<avaje.inject.version>9.4-RC4</avaje.inject.version>
-		<avaje.jsonb.version>1.6-RC5</avaje.jsonb.version>
-		<avaje.config.version>3.6</avaje.config.version>
-		<avaje.http.version>1.46</avaje.http.version>
+		<avaje.inject.version>9.5</avaje.inject.version>
+		<avaje.jsonb.version>1.6</avaje.jsonb.version>
+		<avaje.config.version>3.7</avaje.config.version>
+		<avaje.http.version>2.0-RC3</avaje.http.version>
 		<logback-classic.version>1.4.5</logback-classic.version>
 	</properties>
 	<dependencyManagement>
@@ -88,7 +88,7 @@
 		</dependency>
 		<dependency>
 			<groupId>io.avaje</groupId>
-			<artifactId>avaje-http-nima-generator</artifactId>
+			<artifactId>avaje-http-helidon-generator</artifactId>
 			<version>${avaje.http.version}</version>
 			<scope>provided</scope>
 		</dependency>
@@ -180,7 +180,7 @@
 			<plugin>
 				<groupId>io.avaje</groupId>
 				<artifactId>avaje-inject-maven-plugin</artifactId>
-				<version>1.0</version>
+				<version>1.2</version>
 				<executions>
 					<execution>
 						<phase>process-sources</phase>
