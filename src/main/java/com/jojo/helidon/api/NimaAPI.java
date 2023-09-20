@@ -1,7 +1,7 @@
 package com.jojo.helidon.api;
 
 import io.avaje.inject.BeanScope;
-import io.helidon.nima.webserver.WebServer;
+import io.helidon.webserver.WebServer;
 
 public class NimaAPI {
 

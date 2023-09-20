@@ -3,9 +3,9 @@ package com.jojo.helidon.api.config;
 import io.avaje.config.Config;
 import io.avaje.inject.Bean;
 import io.avaje.inject.Factory;
-import io.helidon.nima.webserver.WebServer;
-import io.helidon.nima.webserver.http.HttpFeature;
-import io.helidon.nima.webserver.http.HttpRouting;
+import io.helidon.webserver.WebServer;
+import io.helidon.webserver.http.HttpFeature;
+import io.helidon.webserver.http.HttpRouting;
 import java.util.List;
 
 @Factory

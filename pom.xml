@@ -8,11 +8,11 @@
 	<name>avaje-helidon-nima-template</name>
 	<description>Demo project for Javalin</description>
 	<properties>
-        <maven.compiler.release>20</maven.compiler.release>
-		<avaje.inject.version>9.5</avaje.inject.version>
-		<avaje.jsonb.version>1.6</avaje.jsonb.version>
+		<maven.compiler.release>21</maven.compiler.release>
+		<avaje.inject.version>9.6-RC1</avaje.inject.version>
+		<avaje.jsonb.version>1.8-RC3</avaje.jsonb.version>
 		<avaje.config.version>3.7</avaje.config.version>
-		<avaje.http.version>2.0-RC3</avaje.http.version>
+		<avaje.http.version>2.0-RC8</avaje.http.version>
 		<logback-classic.version>1.4.5</logback-classic.version>
 	</properties>
 	<dependencyManagement>
@@ -20,7 +20,7 @@
 			<dependency>
 				<groupId>io.helidon</groupId>
 				<artifactId>helidon-bom</artifactId>
-				<version>4.0.0-M1</version>
+				<version>4.0.0-M2</version>
 				<scope>import</scope>
 				<type>pom</type>
 			</dependency>
@@ -28,8 +28,8 @@
 	</dependencyManagement>
 	<dependencies>
 		<dependency>
-			<groupId>io.helidon.nima.webserver</groupId>
-			<artifactId>helidon-nima-webserver</artifactId>
+			<groupId>io.helidon.webserver</groupId>
+			<artifactId>helidon-webserver</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>net.logstash.logback</groupId>
@@ -132,51 +132,16 @@
 			<!-- Create the Runnable Jar with dependencies -->
 
 			<plugin>
-				<groupId>com.spotify.fmt</groupId>
-				<artifactId>fmt-maven-plugin</artifactId>
-				<version>2.19</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>format</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.10.1</version>
 				<configuration>
 					<compilerArgs>
 						<arg>--enable-preview</arg>
-						<arg>--add-modules=jdk.incubator.concurrent</arg>
 					</compilerArgs>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-enforcer-plugin</artifactId>
-				<dependencies>
-					<dependency>
-						<groupId>de.skuzzle.enforcer</groupId>
-						<artifactId>restrict-imports-enforcer-rule</artifactId>
-						<version>2.0.0</version>
-					</dependency>
-				</dependencies>
-				<executions>
-					<execution>
-						<id>enforce</id>
-						<configuration>
-							<rules>
-								<banDuplicatePomDependencyVersions />
-							</rules>
-						</configuration>
-						<goals>
-							<goal>enforce</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+
 			<plugin>
 				<groupId>io.avaje</groupId>
 				<artifactId>avaje-inject-maven-plugin</artifactId>
