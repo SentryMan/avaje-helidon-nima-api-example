@@ -9,94 +9,30 @@
 	<description>Demo project for Javalin</description>
 	<properties>
 		<maven.compiler.release>21</maven.compiler.release>
-		<avaje.inject.version>9.6-RC1</avaje.inject.version>
-		<avaje.jsonb.version>1.8-RC3</avaje.jsonb.version>
-		<avaje.config.version>3.7</avaje.config.version>
-		<avaje.http.version>2.0-RC8</avaje.http.version>
-		<logback-classic.version>1.4.5</logback-classic.version>
 	</properties>
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>io.helidon</groupId>
-				<artifactId>helidon-bom</artifactId>
-				<version>4.0.0-M2</version>
-				<scope>import</scope>
-				<type>pom</type>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 	<dependencies>
 		<dependency>
-			<groupId>io.helidon.webserver</groupId>
-			<artifactId>helidon-webserver</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>net.logstash.logback</groupId>
-			<artifactId>logstash-logback-encoder</artifactId>
-			<version>7.2</version>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<version>${logback-classic.version}</version>
-		</dependency>
-		<dependency>
 			<groupId>io.avaje</groupId>
-			<artifactId>avaje-jsonb</artifactId>
-			<version>${avaje.jsonb.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>io.avaje</groupId>
-			<artifactId>avaje-inject</artifactId>
-			<version>${avaje.inject.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>io.avaje</groupId>
-			<artifactId>avaje-config</artifactId>
-			<version>${avaje.config.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>io.avaje</groupId>
-			<artifactId>avaje-http-api</artifactId>
-			<version>${avaje.http.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>io.avaje</groupId>
-			<artifactId>avaje-http-client</artifactId>
-			<version>${avaje.http.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>io.avaje</groupId>
-			<artifactId>avaje-inject-test</artifactId>
-			<version>${avaje.inject.version}</version>
+			<artifactId>avaje-nima</artifactId>
+			<version>0.2</version>
 		</dependency>
 
-		<!-- Annotation processors -->
 		<dependency>
 			<groupId>io.avaje</groupId>
-			<artifactId>avaje-inject-generator</artifactId>
-			<version>${avaje.inject.version}</version>
+			<artifactId>avaje-nima-generator</artifactId>
+			<version>0.2</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>io.avaje</groupId>
-			<artifactId>avaje-jsonb-generator</artifactId>
-			<version>${avaje.jsonb.version}</version>
-			<scope>provided</scope>
+			<artifactId>avaje-nima-test</artifactId>
+			<version>0.2</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>io.avaje</groupId>
-			<artifactId>avaje-http-helidon-generator</artifactId>
-			<version>${avaje.http.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>io.avaje</groupId>
-			<artifactId>avaje-http-client-generator</artifactId>
-			<version>${avaje.http.version}</version>
-			<scope>provided</scope>
+			<artifactId>avaje-logback-encoder</artifactId>
+			<version>0.2</version>
 		</dependency>
 	</dependencies>
 	<build>

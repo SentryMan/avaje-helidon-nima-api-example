@@ -1,14 +1,18 @@
 package com.jojo.helidon.api;
 
-import io.avaje.inject.BeanScope;
-import io.helidon.webserver.WebServer;
+import org.slf4j.LoggerFactory;
+
+import io.avaje.nima.Nima;
 
 public class NimaAPI {
+
+  private static final org.slf4j.Logger log = LoggerFactory.getLogger(NimaAPI.class);
 
   public static void main(String[] args) {
 
     try {
-      BeanScope.builder().build().get(WebServer.class).start();
+
+      Nima.builder().build().start();
 
     } catch (final Exception e) {
       e.printStackTrace();

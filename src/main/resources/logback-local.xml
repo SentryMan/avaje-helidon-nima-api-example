@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true">
-	<contextName>javalin-template</contextName>
+	<contextName>helidon-template</contextName>
 	<property name="blockingQueueSize" value="256" />
 
 	<!-- Start appenders -->
@@ -16,10 +16,10 @@
 		<appender-ref ref="STDOUT" />
 	</appender>
 
-	<logger name="com.jojo.javalin.api" level="INFO" additivity="false">
+	<logger name="com.jojo.helidon.api" level="INFO" additivity="false">
 		<appender-ref ref="ASYNC_STDOUT" />
 	</logger>
-	<logger name="io.javalin" level="info" additivity="false">
+	<logger name="io.helidon" level="info" additivity="false">
 		<appender-ref ref="ASYNC_STDOUT" />
 	</logger>
 	<root level="info" additivity="false">
