@@ -9,7 +9,6 @@ public class NimaAPI {
   private static final org.slf4j.Logger log = LoggerFactory.getLogger(NimaAPI.class);
 
   public static void main(String[] args) {
-
     try {
 
       Nima.builder().build().start();
