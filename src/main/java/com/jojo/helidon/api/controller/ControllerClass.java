@@ -24,6 +24,7 @@ public class ControllerClass {
     this.service = service;
   }
 
+  @MyTimed
   @Produces("image/png")
   @Get("/get")
   InputStream testBytes(ServerRequest req, ServerResponse res) {
