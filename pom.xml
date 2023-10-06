@@ -100,6 +100,7 @@
 						</goals>
 						<configuration>
 							<outputDirectory>${project.build.directory}/modules</outputDirectory>
+							<includeScope>runtime</includeScope>
 						</configuration>
 					</execution>
 				</executions>
@@ -111,35 +112,44 @@
 					<outputDirectory>${project.build.directory}/modules</outputDirectory>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.moditect</groupId>
-				<artifactId>moditect-maven-plugin</artifactId>
-				<version>1.0.0.Final</version>
-				<executions>
-					<execution>
-						<id>create-runtime-image</id>
-						<phase>package</phase>
-						<goals>
-							<goal>create-runtime-image</goal>
-						</goals>
-						<configuration>
-							<modulePath>
-								<path>${project.build.directory}/modules</path>
-							</modulePath>
-							<modules>
-								<module>nima.example</module>
-							</modules>
-							<stripDebug>true</stripDebug>
-							<noManPages>true</noManPages>
-							<noHeaderFiles>true</noHeaderFiles>
-							<jarInclusionPolicy>NONE</jarInclusionPolicy>
-							<outputDirectory>
-								${project.build.directory}/jlink-image
-							</outputDirectory>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
 	</build>
+	<profiles>
+		<profile>
+			<id>jlink</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.moditect</groupId>
+						<artifactId>moditect-maven-plugin</artifactId>
+						<version>1.0.0.Final</version>
+						<executions>
+							<execution>
+								<id>create-runtime-image</id>
+								<phase>package</phase>
+								<goals>
+									<goal>create-runtime-image</goal>
+								</goals>
+								<configuration>
+									<modulePath>
+										<path>${project.build.directory}/modules</path>
+									</modulePath>
+									<modules>
+										<module>nima.example</module>
+									</modules>
+									<stripDebug>true</stripDebug>
+									<noManPages>true</noManPages>
+									<noHeaderFiles>true</noHeaderFiles>
+									<jarInclusionPolicy>NONE</jarInclusionPolicy>
+									<outputDirectory>
+										${project.build.directory}/jlink-image
+									</outputDirectory>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
