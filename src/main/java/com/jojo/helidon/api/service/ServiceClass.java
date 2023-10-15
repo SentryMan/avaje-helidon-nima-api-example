@@ -1,5 +1,6 @@
 package com.jojo.helidon.api.service;
 
+import com.jojo.helidon.api.aspect.Timed;
 import com.jojo.helidon.api.client.ApiClient;
 import com.jojo.helidon.api.exception.ApplicationException;
 import com.jojo.helidon.api.exception.ErrorEnum;
@@ -22,6 +23,7 @@ public class ServiceClass {
     this.api = api;
   }
 
+  @Timed
   public InputStream callDownStream() {
     try {
 

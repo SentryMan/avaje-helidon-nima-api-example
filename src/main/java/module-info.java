@@ -2,6 +2,7 @@ module nima.example {
 
   requires io.avaje.nima;
   requires io.avaje.http.client;
+  requires io.avaje.validation.contraints;
   requires io.avaje.validation.http;
   requires io.avaje.logback.encoder;
 
@@ -11,4 +12,6 @@ module nima.example {
       com.jojo.helidon.api.client.httpclient.GeneratedHttpComponent;
   provides io.avaje.jsonb.Jsonb.GeneratedComponent with
       com.jojo.helidon.api.jsonb.GeneratedJsonComponent;
+  provides io.avaje.validation.Validator.GeneratedComponent with
+      com.jojo.helidon.api.controller.valid.GeneratedValidatorComponent;
 }

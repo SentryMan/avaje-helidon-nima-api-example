@@ -9,6 +9,7 @@ import io.avaje.http.api.Controller;
 import io.avaje.http.api.Get;
 import io.avaje.http.api.Post;
 import io.avaje.http.api.Produces;
+import io.avaje.http.api.Valid;
 import io.helidon.webserver.http.ServerRequest;
 import io.helidon.webserver.http.ServerResponse;
 import jakarta.inject.Inject;
@@ -31,6 +32,7 @@ public class ControllerClass {
     return service.callDownStream();
   }
 
+  @Valid
   @Post("/post")
   RequestModel testPost(RequestModel m) {
 
