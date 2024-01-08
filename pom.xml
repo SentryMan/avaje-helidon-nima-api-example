@@ -8,37 +8,34 @@
 	<name>avaje-helidon-nima-template</name>
 	<description>Demo project for Helidon</description>
 	<parent>
-		<groupId>io.helidon.applications</groupId>
-		<artifactId>helidon-se</artifactId>
-		<version>4.0.0</version>
+		<groupId>io.avaje</groupId>
+		<artifactId>avaje-nima-parent</artifactId>
+		<version>0.8</version>
 		<relativePath />
 	</parent>
 	<properties>
 		<maven.compiler.release>21</maven.compiler.release>
+		<module.name>nima.example</module.name>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>io.avaje</groupId>
 			<artifactId>avaje-nima</artifactId>
-			<version>0.7</version>
 		</dependency>
 
 		<dependency>
 			<groupId>io.avaje</groupId>
 			<artifactId>avaje-nima-generator</artifactId>
-			<version>0.7</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>io.avaje</groupId>
 			<artifactId>avaje-nima-test</artifactId>
-			<version>0.7</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>io.avaje</groupId>
 			<artifactId>avaje-logback-encoder</artifactId>
-			<version>0.3</version>
 		</dependency>
 	</dependencies>
 	<build>
