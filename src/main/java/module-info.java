@@ -1,6 +1,10 @@
 module nima.example {
 
   requires io.avaje.nima;
+  requires java.instrument;
+  requires io.helidon.tracing;
+  requires io.helidon.webserver.observe;
+  requires io.helidon.webserver.observe.tracing;
   requires io.avaje.http.client;
   requires io.avaje.validation.contraints;
   requires io.avaje.validation.http;
