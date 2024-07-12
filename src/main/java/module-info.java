@@ -9,6 +9,7 @@ module nima.example {
   requires io.avaje.validation.contraints;
   requires io.avaje.validation.http;
   requires io.avaje.logback.encoder;
+  requires io.helidon.tracing.providers.opentelemetry;
 
   provides io.avaje.inject.spi.Module with
       com.jojo.helidon.api.ApiModule;
