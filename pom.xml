@@ -17,29 +17,35 @@
 		<maven.compiler.release>22</maven.compiler.release>
 		<module.name>nima.example</module.name>
 	</properties>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>io.helidon</groupId>
+				<artifactId>helidon-bom</artifactId>
+				<version>4.0.10</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 	<dependencies>
 		<dependency>
 			<groupId>io.avaje</groupId>
 			<artifactId>avaje-nima</artifactId>
 		</dependency>
 
-    <dependency>
-        <groupId>io.helidon.tracing</groupId>
-        <artifactId>helidon-tracing</artifactId>    
-    </dependency>
-    <dependency>
-        <groupId>io.helidon.webserver.observe</groupId>
-        <artifactId>helidon-webserver-observe-tracing</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.helidon.tracing.providers</groupId>
-      <artifactId>helidon-tracing-providers-opentelemetry</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.helidon.metrics</groupId>
-      <artifactId>helidon-metrics-trace-exemplar</artifactId>
-      <scope>runtime</scope>
-    </dependency>
+		<dependency>
+			<groupId>io.helidon.tracing</groupId>
+			<artifactId>helidon-tracing</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.helidon.webserver.observe</groupId>
+			<artifactId>helidon-webserver-observe-tracing</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.helidon.tracing.providers</groupId>
+			<artifactId>helidon-tracing-providers-opentelemetry</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>io.avaje</groupId>
 			<artifactId>avaje-nima-generator</artifactId>
@@ -85,7 +91,7 @@
 					<useModulePath>false</useModulePath>
 				</configuration>
 			</plugin>
-      <!-- Create the Runnable Jar with dependencies -->
+			<!-- Create the Runnable Jar with dependencies -->
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
