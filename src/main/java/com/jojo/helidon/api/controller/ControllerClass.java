@@ -7,6 +7,7 @@ import com.jojo.helidon.api.service.ServiceClass;
 
 import io.avaje.http.api.Controller;
 import io.avaje.http.api.Get;
+import io.avaje.http.api.MediaType;
 import io.avaje.http.api.Post;
 import io.avaje.http.api.Produces;
 import io.avaje.http.api.Valid;
@@ -25,8 +26,8 @@ public class ControllerClass {
     this.service = service;
   }
 
-  @Produces("image/png")
   @Get("/get")
+  @Produces(MediaType.IMAGE_JPEG)
   InputStream testBytes(ServerRequest req, ServerResponse res) {
 
     return service.callDownStream();

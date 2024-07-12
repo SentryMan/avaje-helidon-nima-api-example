@@ -1,7 +1,5 @@
 package com.jojo.helidon.api;
 
-import org.slf4j.LoggerFactory;
-
 import io.avaje.nima.Nima;
 
 public class NimaAPI {

@@ -27,7 +27,7 @@ public class ServiceClass {
   public InputStream callDownStream() {
     try {
 
-      return api.call("image/png").body();
+      return api.call().body();
     } catch (final HttpException e) {
       final var body =
           Optional.ofNullable(e.httpResponse())
