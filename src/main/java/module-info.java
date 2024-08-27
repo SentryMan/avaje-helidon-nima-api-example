@@ -1,8 +1,7 @@
-
-
 module nima.example {
 
   requires io.avaje.nima;
+  requires jakarta.inject;
   requires io.avaje.inject.aop;
   requires io.avaje.http.client;
   requires io.avaje.validation.contraints;
