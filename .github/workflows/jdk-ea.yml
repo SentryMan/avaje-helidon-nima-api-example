@@ -1,5 +1,5 @@
 
-name: avaje-http EA
+name: EA Builds
 
 on:
   pull_request:
