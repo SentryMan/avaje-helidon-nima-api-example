@@ -1,5 +1,5 @@
 
-name: avaje-http EA
+name: EA Builds
 
 on:
   pull_request:
@@ -9,7 +9,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ${{ matrix.os }}
     permissions:
       contents: read
@@ -17,7 +16,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        java_version: [GA,EA] ## valhalla (fails javadoc)
+        java_version: [EA]
         os: [ubuntu-latest]
 
     steps:
