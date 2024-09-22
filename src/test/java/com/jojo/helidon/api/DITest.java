@@ -1,4 +1,4 @@
-package com.jojo.javalin.api;
+package com.jojo.helidon.api;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
