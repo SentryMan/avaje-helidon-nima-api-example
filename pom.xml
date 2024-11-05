@@ -10,11 +10,11 @@
 	<parent>
 		<groupId>io.avaje</groupId>
 		<artifactId>avaje-nima-parent</artifactId>
-		<version>1.1-RC2</version>
+		<version>1.1-RC4</version>
 		<relativePath />
 	</parent>
 	<properties>
-		<maven.compiler.release>23</maven.compiler.release>
+		<maven.compiler.release>21</maven.compiler.release>
 		<module.name>nima.example</module.name>
 	</properties>
 	<dependencies>
