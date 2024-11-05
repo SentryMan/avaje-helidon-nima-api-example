@@ -14,7 +14,7 @@
 		<relativePath />
 	</parent>
 	<properties>
-		<maven.compiler.release>21</maven.compiler.release>
+		<maven.compiler.release>23</maven.compiler.release>
 		<module.name>nima.example</module.name>
 	</properties>
 	<dependencies>
