@@ -93,6 +93,12 @@
 				<artifactId>maven-jar-plugin</artifactId>
 				<configuration>
 					<outputDirectory>${project.build.directory}/modules</outputDirectory>
+					<archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <mainClass>com.jojo.helidon.api.NimaAPI</mainClass>
+            </manifest>
+          </archive>
 				</configuration>
 			</plugin>
 		</plugins>
