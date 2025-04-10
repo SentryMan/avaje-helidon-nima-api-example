@@ -10,11 +10,11 @@
 	<parent>
 		<groupId>io.avaje</groupId>
 		<artifactId>avaje-nima-parent</artifactId>
-		<version>1.1</version>
+		<version>1.2</version>
 		<relativePath />
 	</parent>
 	<properties>
-		<maven.compiler.release>23</maven.compiler.release>
+		<maven.compiler.release>24</maven.compiler.release>
 		<module.name>nima.example</module.name>
 	</properties>
 	<dependencies>
@@ -42,7 +42,7 @@
 			<plugin>
 				<groupId>io.avaje</groupId>
 				<artifactId>avaje-provides-maven-plugin</artifactId>
-				<version>1.1</version>
+				<version>2.1</version>
 			</plugin>
 			<plugin>
 				<groupId>org.jacoco</groupId>
