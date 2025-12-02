@@ -18,3 +18,5 @@ props.env
 openapi.json
 io.avaje.http.client.HttpApiProvider
 io.avaje.inject.spi.Module
+/target/
+.idea/
