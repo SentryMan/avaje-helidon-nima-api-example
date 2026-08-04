@@ -8,7 +8,7 @@ import io.avaje.http.client.HttpClient;
 import io.avaje.inject.test.InjectTest;
 import jakarta.inject.Inject;
 
-@InjectTest
+@InjectTest(profiles = "cloud")
 class DITest {
   @Inject HttpClient server;
 
